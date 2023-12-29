@@ -77,7 +77,7 @@ public class SeleniumTest {
         destinationDropdown.click();
 
         // Klik tanggal
-        WebElement departure = driver.findElement(By.xpath("//div[@class='DayPicker-Day DayPicker-Day--selected']"));
+        WebElement departure = driver.findElement(By.cssSelector("[aria-label='Mon Jan 01 2024']"));
         departure.click();
         try {
             Thread.sleep(3000);
@@ -86,7 +86,7 @@ public class SeleniumTest {
         }
 
         // Klik button Search
-        WebElement searchButton = driver.findElement(By.xpath("//a[.='Search']"));
+        WebElement searchButton = driver.findElement(By.cssSelector(".primaryBtn"));
         searchButton.click();
 
         // Tunggu beberapa detik agar hasil pencarian muncul
@@ -96,9 +96,13 @@ public class SeleniumTest {
             e.printStackTrace();
         }
 
+        // Klik button Okay Got It!
+        WebElement okayButton = driver.findElement(By.cssSelector(".buttonBig"));
+        okayButton.click();
+
         // Ekstrak value dari harga teratas
-        WebElement topPriceElement = driver.findElement(By.xpath("//div[@class='blackText fontSize18 blackFont white-space-no-wrap clusterViewPrice']"));
-        //.clusterViewPrice
+        WebElement topPriceElement = driver.findElement(By.cssSelector(".clusterViewPrice"));
+        ////div[@class='blackText fontSize18 blackFont white-space-no-wrap clusterViewPrice']
         String topPrice = topPriceElement.getText();
 
         System.out.println("Top Price: " + topPrice);
